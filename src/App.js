@@ -1,16 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import Row from './components/Row.js'
+import Board from './components/Board.js'
 
 function App() {
   return (
     <div className="app">
-      <Row/>
-      <Row/>
-      <Row/>
-      <Row/>
-      <Row/>
-      <Row/>
+      <Board />
     </div>
   );
 }
