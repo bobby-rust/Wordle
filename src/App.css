@@ -1,6 +1,6 @@
 .square {
   display: inline-block;
-  font-size: 45px;
+  font-size: 35px;
   border: 1px solid black;
   height: 45px;
   width: 45px;
@@ -8,7 +8,7 @@
 
 .row {
   display: inline-block;
-  margin: 5px 5px;
+  /* margin: 5px 5px; */
 }
 
 .board {

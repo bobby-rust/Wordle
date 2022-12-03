@@ -1,4 +1,5 @@
 import Row from './Row.js'
+import React from 'react'
 
 function Board() {
     const [boardState, setBoardState] = React.useState({
@@ -46,13 +47,45 @@ function Board() {
         },
     })
 
-    const [row1State, setRow1State] = React.useState(['a', 'b', 'c', 'd', 'e'])
+    const [row1State, setRow1State] = React.useState([])
     const [row2State, setRow2State] = React.useState(['f', 'g', 'h', 'i', 'j'])
     const [row3State, setRow3State] = React.useState(['k', 'l', 'm', 'n', 'o'])
     const [row4State, setRow4State] = React.useState(['p', 'q', 'r', 's', 't'])
     const [row5State, setRow5State] = React.useState(['u', 'v', 'w', 'x', 'y'])
     const [row6State, setRow6State] = React.useState(['z', '1', '2', '3', '4'])
 
+    const deleteByIndex = index => {
+        setRow1State(oldValues => {
+            return oldValues.filter((_, i) => i !== index)
+        })
+    }
+    
+    const pattern = new RegExp('[a-zA-Z]')
+    function handleKeydown(event) {
+        console.log("Hello from handleKeydown!")
+        console.log(event.key)
+        if (event.key === " " || event.key === "CapsLock" || !pattern.test(event.key)) return
+        if (event.key === "Backspace") {
+            console.log("event.key is backspace")
+            deleteByIndex(row1State.length - 1)
+        }
+        else if (row1State.length < 5) {
+            setRow1State([...row1State, event.key])
+        }
+
+
+    }
+    // Only when the user presses Enter AND the current row is FULL should the row be moved on to the next row. 
+    React.useEffect(() => {
+        window.addEventListener('keydown', handleKeydown)
+        return () => {
+            window.removeEventListener('keydown', handleKeydown)
+        }
+    })
+
+    
+    
+    
     function updateRowState(id, event) {}
 
     /*
@@ -103,6 +136,7 @@ function Board() {
             <Row row={row4State} id={4} onChange={updateRowState} />
             <Row row={row5State} id={5} onChange={updateRowState} />
             <Row row={row6State} id={6} onChange={updateRowState} />
+            
         </div>
     )
 }

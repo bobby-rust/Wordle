@@ -32,6 +32,7 @@ function Row(props) {
             <Square value={props.row[2]} idx={2} onChange={props.onChange} />
             <Square value={props.row[3]} idx={3} onChange={props.onChange} />
             <Square value={props.row[4]} idx={4} onChange={props.onChange} />
+            
         </div>
     )
 }
