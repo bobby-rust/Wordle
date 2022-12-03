@@ -285,12 +285,12 @@ function Board() {
 
     return (
         <div className='board'>
-            <Row row={row1State} id={1} onChange={updateRowState} />
-            <Row row={row2State} id={2} onChange={updateRowState} />
-            <Row row={row3State} id={3} onChange={updateRowState} />
-            <Row row={row4State} id={4} onChange={updateRowState} />
-            <Row row={row5State} id={5} onChange={updateRowState} />
-            <Row row={row6State} id={6} onChange={updateRowState} />
+            <Row row={row1State} id={1}/>
+            <Row row={row2State} id={2}/>
+            <Row row={row3State} id={3}/>
+            <Row row={row4State} id={4}/>
+            <Row row={row5State} id={5}/>
+            <Row row={row6State} id={6}/>
             
         </div>
     )
