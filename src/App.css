@@ -1,9 +1,37 @@
-.square {
+.square-default {
   display: inline-block;
   font-size: 35px;
   border: 1px solid black;
   height: 45px;
   width: 45px;
+  
+}
+
+.square-green {
+  display: inline-block;
+  font-size: 35px;
+  border: 1px solid black;
+  height: 45px;
+  width: 45px;
+  background-color: green;
+}
+
+.square-yellow {
+  display: inline-block;
+  font-size: 35px;
+  border: 1px solid black;
+  height: 45px;
+  width: 45px;
+  background-color: yellow;
+}
+
+.square-grey {
+  display: inline-block;
+  font-size: 35px;
+  border: 1px solid black;
+  height: 45px;
+  width: 45px;
+  background-color: grey;
 }
 
 .row {
@@ -15,3 +43,4 @@
   text-align: center;
   margin-top: 50px;
 }
+
