@@ -1,46 +1,42 @@
-.square-default {
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.app {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.square-default, .square-green, .square-grey, .square-yellow {
   display: inline-block;
   font-size: 35px;
   border: 1px solid black;
   height: 45px;
+  size: 100%;
   width: 45px;
-  
+  vertical-align: text-top;
+  margin-right: 5px;
 }
 
 .square-green {
-  display: inline-block;
-  font-size: 35px;
-  border: 1px solid black;
-  height: 45px;
-  width: 45px;
   background-color: green;
 }
 
 .square-yellow {
-  display: inline-block;
-  font-size: 35px;
-  border: 1px solid black;
-  height: 45px;
-  width: 45px;
   background-color: yellow;
 }
 
 .square-grey {
-  display: inline-block;
-  font-size: 35px;
-  border: 1px solid black;
-  height: 45px;
-  width: 45px;
   background-color: grey;
 }
 
 .row {
-  display: inline-block;
-  /* margin: 5px 5px; */
+  margin: 5px 5px;
+  height: 45px;
 }
 
 .board {
   text-align: center;
-  margin-top: 50px;
 }
-

@@ -2,7 +2,6 @@ import Row from './Row.js'
 import React from 'react'
 import words from "../5_letter_words"
 
-
 function Board() {
     // Set up state
     const [boardState, setBoardState] = React.useState({
@@ -18,19 +17,16 @@ function Board() {
     const [row5State, setRow5State] = React.useState([])
     const [row6State, setRow6State] = React.useState([])
 
-    // console.log(boardState.word)
-
     // Regular expression to make sure the user enters a letter
     const pattern = new RegExp('[a-zA-Z]')
 
     function handleEnter(array, row) {
-        /* This will be called when enter is pressed and the current row's state is full
-           Checks the current row for letters in the word to guess, sets the css class to yellow for 
-           letters that are in the word but in the wrong spot, green for letters that are in the word and in the correct spot,
-           and grey for letters that are not in the word
-           @return: void
-           @param array - the array to check
-           @param row - which row should be modified 
+        /** 
+         * This will be called when enter is pressed and the current row's state has length 5.
+         * Compares the letters in current row to boardState.word and updates boardState with the correct class for each letter 
+         * @return: void
+         * @param array: the array to check
+         * @param row: which row should be modified 
          */
 
         var i;
@@ -136,7 +132,7 @@ function Board() {
                 }
             }
         }
-        // console.log(string)
+
         if (string == boardState.word) {
             console.log("You won!")
             setBoardState({...boardState, isGameOver: true})
@@ -148,6 +144,7 @@ function Board() {
     
     function handleKeydown(event) {
         if (boardState.isGameOver) return
+        if ((event.key.length > 1) && (event.key !== "Backspace" && event.key !== "Enter")) return
 
         if (boardState.currentRow === 1) {
             if (event.key === " " || event.key === "CapsLock" || event.key === "Tab" || event.key === "Alt" || event.key === "Shift" || event.key === "Control" || !pattern.test(event.key)) return
@@ -276,6 +273,9 @@ function Board() {
     
     // Create and clean up event listener for keydown events
     React.useEffect(() => {
+        if (boardState.isGameOver) {
+            console.log("Game over. The word was:", boardState.word)
+        }
         window.addEventListener('keydown', handleKeydown)
         console.log("Game over is: ", boardState.isGameOver)
         return () => {
@@ -291,7 +291,7 @@ function Board() {
             <Row row={row4State} id={4}/>
             <Row row={row5State} id={5}/>
             <Row row={row6State} id={6}/>
-            
+            {boardState.isGameOver && <h2>Game over. The word was: {boardState.word}</h2>}
         </div>
     )
 }

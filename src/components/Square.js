@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 function Square(props) {
     if (props.data) {
-        // console.log("row1state in square: ", props.data)
         return (
             <div className={props.data.class}>
                 {props.data.letter}
@@ -11,7 +10,7 @@ function Square(props) {
     }
     else {
         return (
-            <div className="square-default"></div>
+            <div className="square-default"> </div>
         )
         
     }
