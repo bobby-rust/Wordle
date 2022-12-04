@@ -4,7 +4,7 @@ function Square(props) {
     if (props.data) {
         return (
             <div className={props.data.class}>
-                {props.data.letter}
+                <div className='text-wrapper'>{props.data.letter}</div>
             </div>
         )  
     }

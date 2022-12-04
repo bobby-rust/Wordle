@@ -20,6 +20,18 @@ function Board() {
     // Regular expression to make sure the user enters a letter
     const pattern = new RegExp('[a-zA-Z]')
 
+    // Create and clean up event listener for keydown events
+    React.useEffect(() => {
+        console.log(boardState.word)
+        if (boardState.isGameOver) {
+            console.log("Game over. The word was:", boardState.word)
+        }
+        window.addEventListener('keydown', handleKeydown)
+        return () => {
+            window.removeEventListener('keydown', handleKeydown)
+        }
+    })
+
     function handleEnter(array, row) {
         /** 
          * This will be called when enter is pressed and the current row's state has length 5.
@@ -32,9 +44,8 @@ function Board() {
         var i;
         var string = "";
         for (i = 0; i < array.length; i++) {
-            string = string + array[i].letter
-            if (array[i].letter === boardState.word[i]) {
-                console.log("letter is in correct spot")
+            string = string + array[i].letter.toLowerCase()
+            if (string[i] === boardState.word[i]) {
                 if (row === 1) {
                     const tmpState = [...row1State]
                     tmpState[i].class = "square-green"
@@ -66,8 +77,7 @@ function Board() {
                     setRow6State(tmpState)
                 }
             }
-            else if (boardState.word.includes(array[i].letter)) {
-                console.log("word includes letter")
+            else if (boardState.word.includes(array[i].letter.toLowerCase())) {
                 if (row === 1) {
                     const tmpState = [...row1State]
                     tmpState[i].class = "square-yellow"
@@ -270,18 +280,20 @@ function Board() {
             }
         }
     }
-    
-    // Create and clean up event listener for keydown events
-    React.useEffect(() => {
-        if (boardState.isGameOver) {
-            console.log("Game over. The word was:", boardState.word)
-        }
-        window.addEventListener('keydown', handleKeydown)
-        console.log("Game over is: ", boardState.isGameOver)
-        return () => {
-            window.removeEventListener('keydown', handleKeydown)
-        }
-    })
+
+    function resetGame() {
+        setBoardState({
+            currentRow: 1,
+            isGameOver: false,
+            word: words[Math.floor(Math.random() * words.length)].word,
+        })
+        setRow1State([])
+        setRow2State([])
+        setRow3State([])
+        setRow4State([])
+        setRow5State([])
+        setRow6State([])
+    }
 
     return (
         <div className='board'>
@@ -292,6 +304,7 @@ function Board() {
             <Row row={row5State} id={5}/>
             <Row row={row6State} id={6}/>
             {boardState.isGameOver && <h2>Game over. The word was: {boardState.word}</h2>}
+            {boardState.isGameOver && <button onClick={resetGame} className="reset-button">Play again</button>}
         </div>
     )
 }

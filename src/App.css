@@ -3,6 +3,9 @@
   padding: 0px;
 }
 
+h1 {
+  margin-bottom: 20px;
+}
 .app {
   text-align: center;
   margin-top: 20px;
@@ -12,12 +15,18 @@
 .square-default, .square-green, .square-grey, .square-yellow {
   display: inline-block;
   font-size: 35px;
-  border: 1px solid black;
-  height: 45px;
-  size: 100%;
-  width: 45px;
-  vertical-align: text-top;
+  font-weight: bold;
+  border: 2px solid rgba(148, 146, 146, 0.5);
+  height: 60px;
+  width: 60px;
   margin-right: 5px;
+  text-transform: uppercase;
+  vertical-align: text-bottom;
+  border-radius: 1px;
+}
+
+.text-wrapper {
+  margin-top: 5px;
 }
 
 .square-green {
@@ -32,11 +41,32 @@
   background-color: grey;
 }
 
-.row {
-  margin: 5px 5px;
-  height: 45px;
+.row {  
+  height: 60px;
+  margin-bottom: 10px;
 }
 
 .board {
   text-align: center;
+}
+
+.reset-button {
+  border: 1px solid black;
+  height: 75px;
+  width: 200px;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(221, 230, 233);
+  background-color: rgb(46, 44, 44);
+}
+
+h2 {
+  margin: 10px 10px;
+}
+
+.reset-button:hover {
+  box-shadow: 5px 5px 10px #888888;
+  /*h-offset v-offset blur spread color */
+  cursor: pointer;
 }
